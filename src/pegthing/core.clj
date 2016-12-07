@@ -9,6 +9,7 @@
 ;;let - names something within scope of the 'let'(let [name <(function)/data>] <[another let]> (let body))
 ;;cons - returns list where data is added to the begining of a sequence (cons data sequence)
 ;;lazy-seq -
+;;inc - increments data by 1
 
 ;;this function has an arity of 2,
 ;;1st arity has no arguments and calls itself with arguments of 1 0 (servs as a default),
