@@ -46,3 +46,43 @@
 
 ;(triangular? 5)
 ;(triangular? 6)
+
+
+;;take - returns the first n amount of elements within a seq (take int seq)
+
+;;this function takes in an integer, that integer is used in a take form to return the first n numbers of the tri seq
+;;it then grabs the last number of that seq
+(defn row-tri
+  "the triangular number at the end of row n"
+  [n]
+  (last(take n tri)))
+
+
+;(row-tri 1)
+;(row-tri 10)
+
+;;count - counts all the elements within a seq
+;;inc - increments a number by 1
+
+;;this function takes in an integer(peg position) and compares the integer with the elements in tri and takes elements from it until the integer is no longer bigger than the values within tri
+;;it then counts how many elements are within the returned seq and then incraments that by 1
+(defn row-num
+  "returns row number the position belongs to: pos 1 row 1, pos 2 and 3 row 2, etc"
+  [pos]
+  (inc (count (take-while #(> pos %) tri))))
+
+;(row-num 1)
+;(row-num 5)
+;(row-num 10)
+
+
+
+(defn connect
+  "form a mutual connection between two positions"
+  [board max-pos pos neighbor destination]
+  (if (<= destination max-pos)
+    (reduce (fn [new-board [p1 p2]]
+              (assoc-in new-board [p1 :connections p2] neighbor))
+            board
+            [[pos destination] [destination pos]])
+    board))
