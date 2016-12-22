@@ -28,7 +28,7 @@
 ;;this just calls tri* and names it tri
 (def tri (tri*))
 
-;(take 5 tri)
+(take 5 tri)
 
 ;;= - used to check equality in 2 things, returns boolean
 ;;last - returns last element in a list (last sequence)
@@ -44,8 +44,8 @@
   [n]
   (= n (last (take-while #(>= n %) tri))))
 
-;(triangular? 5)
-;(triangular? 6)
+(triangular? 5)
+(triangular? 6)
 
 
 ;;take - returns the first n amount of elements within a seq (take int seq)
@@ -58,8 +58,8 @@
   (last(take n tri)))
 
 
-;(row-tri 1)
-;(row-tri 10)
+(row-tri 1)
+(row-tri 10)
 
 ;;count - counts all the elements within a seq
 ;;inc - increments a number by 1
@@ -71,11 +71,16 @@
   [pos]
   (inc (count (take-while #(> pos %) tri))))
 
-;(row-num 1)
-;(row-num 5)
-;(row-num 10)
+(row-num 1)
+(row-num 5)
+(row-num 10)
 
 
+;;reudce - applys a function accross a seq a value can be optionaly provided so all elements in the seq gets evaluated with the val and not the next element in the seq (reduce function <val> seq)
+;;assoc-in - associates values to a map takes a map a vector of keys and a value. the passed in map can be empty(populate an empty map) or full(change value in current map)  (assoc-in {map} [vector] value)
+
+;;this function creates a nested map showing the connection between 2 point in both directions
+;;it first checks if your destination is out of bounds if it is it just returns an un changed board
 
 (defn connect
   "form a mutual connection between two positions"
@@ -86,3 +91,5 @@
             board
             [[pos destination] [destination pos]])
     board))
+
+(connect {} 15 1 2 4)
